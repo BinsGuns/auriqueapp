@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SQUIZ</string>
+    <string name="instruction">Here goes your instruction</string>
+    <string name="disconnected">Check network connection / Internet problem</string>
+</resources>

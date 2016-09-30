@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android">
+<data>
+    <variable
+        name="question"
+        type="com.thesis.aurique.squiz.model.Questions"></variable>
+</data>
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- The main content view -->
+    <FrameLayout
+        android:id="@+id/maincontent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:background="@color/blue"
+                android:orientation="horizontal"
+                android:padding="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/navButton"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/ic_dehaze_white_24dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_marginLeft="16dp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <FrameLayout
+                android:padding="16dp"
+                android:id="@+id/questionMainWrapper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+            </FrameLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+        <!-- The navigation drawer -->
+
+        <ListView android:id="@+id/listItem"
+            android:layout_width="240dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:choiceMode="singleChoice"
+            android:divider="@color/grey"
+            android:dividerHeight="0.5dp"
+            android:background="#111"/>
+
+    </android.support.v4.widget.DrawerLayout>
+
+</layout>
