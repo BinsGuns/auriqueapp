@@ -8,7 +8,7 @@
     </data>
 
     <RelativeLayout
-        android:background="@color/blue"
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -18,30 +18,52 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:src="@drawable/logo"
+                android:layout_gravity="center"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
             <TextView
+                android:layout_marginBottom="12dp"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:text="quiz me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
                 android:textAllCaps="true"
                 android:id="@+id/errorMessage"
                 android:layout_gravity="center"
-                android:textColor="@color/white"
+                android:textColor="@color/red"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <EditText
-                android:drawableLeft="@drawable/ic_person_white_24dp"
-                android:drawablePadding="6dp"
+                android:textSize="@dimen/standard_font"
+                android:padding="6dp"
                 android:id="@+id/email"
                 android:hint="Email"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:background="@color/white"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <EditText
-                android:drawablePadding="6dp"
-                android:drawableLeft="@drawable/ic_lock_white_24dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:background="@color/white"
+                android:textSize="@dimen/standard_font"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
                 android:id="@+id/password"
+                android:padding="6dp"
                 android:inputType="textPassword"
                 android:hint="Password"
                 android:layout_width="match_parent"
@@ -57,17 +79,24 @@
                     android:layout_marginBottom="6dp"
                     android:text="LOGIN"
                     android:textStyle="bold"
-                    android:background="@color/darkblue"
+                    android:textSize="@dimen/standard_font"
+                    android:background="@color/buttonprimary"
                     android:textColor="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-
+                <TextView
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:text="OR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
                 <android.support.v7.widget.AppCompatButton
                     android:text="REGISTER"
                     android:textStyle="bold"
+                    android:textSize="@dimen/standard_font"
                     android:layout_marginTop="6dp"
-                    android:textColor="@color/blue"
-                    android:background="@color/white"
+                    android:textColor="@color/white"
+                    android:background="@color/buttonprimary"
                     android:id="@+id/registerButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="16dp"
-    android:orientation="vertical"
+    android:background="@color/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+<LinearLayout
+    android:layout_centerInParent="true"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <TextView
         android:layout_margin="10dp"
         android:text="REGISTER"
+        android:textColor="@color/white"
+        android:textSize="@dimen/title_font"
         android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -23,26 +29,41 @@
     <EditText
         android:id="@+id/email"
         android:hint="Email"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:padding="6dp"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
         android:id="@+id/password"
         android:inputType="textPassword"
         android:hint="Password"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:background="@color/white"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:padding="6dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
 
         <android.support.v7.widget.AppCompatButton
             android:text="REGISTER"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="6dp"
+            android:background="@color/buttonprimary"
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-    </LinearLayout>
-
 
 </LinearLayout>
+
+
+
+</RelativeLayout>
