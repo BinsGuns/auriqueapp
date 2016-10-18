@@ -1,13 +1,16 @@
 package com.thesis.aurique.squiz.view.activity;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
@@ -26,6 +29,7 @@ import com.thesis.aurique.squiz.databinding.QuestionActivityBinding;
 import com.thesis.aurique.squiz.model.Questions;
 import com.thesis.aurique.squiz.model.User;
 import com.thesis.aurique.squiz.view.fragment.AddQuestionFragment;
+import com.thesis.aurique.squiz.view.fragment.QuestionFragment;
 import com.thesis.aurique.squiz.view.fragment.QuestionWelcomeFragment;
 
 import java.util.ArrayList;
@@ -38,20 +42,21 @@ public class QuestionMainActivity extends BaseActivity implements View.OnClickLi
     private User u;
     private DrawerLayout drawerLayout;
     public List<Questions> listQuestion;
+    public ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 
-        questionFragmentBinding = DataBindingUtil.setContentView(this,R.layout.question_activity);
+        questionFragmentBinding = DataBindingUtil.setContentView(this, R.layout.question_activity);
         drawerLayout = questionFragmentBinding.drawer;
         ListView listView = questionFragmentBinding.listItem;
 
         checkUser();
-        List<String> menuList =  initializeList();
+        List<String> menuList = initializeList();
 
-        listView.setAdapter(new ArrayAdapter<>(this,R.layout.item_nav_layout,menuList));
+        listView.setAdapter(new ArrayAdapter<>(this, R.layout.item_nav_layout, menuList));
 
         questionFragmentBinding.navButton.setOnClickListener(this);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -61,42 +66,9 @@ public class QuestionMainActivity extends BaseActivity implements View.OnClickLi
             }
         });
 
-        changeFragment(new QuestionWelcomeFragment());
+        changeFragment(new QuestionWelcomeFragment(),"QuestionWelcomeTag");
 
-
-        db.addChildEventListener(new ChildEventListener() {
-
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Log.d("","added");
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                listQuestion = new ArrayList<>();
-                for(DataSnapshot d : dataSnapshot.getChildren()){
-                    Questions q =  d.getValue(Questions.class);
-                    listQuestion.add(q);
-                }
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
     }
-
 
     private void checkUser() {
         FirebaseUser user = auth.getCurrentUser();
@@ -120,6 +92,12 @@ public class QuestionMainActivity extends BaseActivity implements View.OnClickLi
     }
 
 
+    public void showSnackBar(String message){
+        Snackbar snackbar  = Snackbar.make(findViewById(android.R.id.content),message,Snackbar.LENGTH_LONG);
+        snackbar.show();
+    }
+
+
     private void selectedItem(String val){
         switch(val){
             case "Log out":
@@ -130,16 +108,16 @@ public class QuestionMainActivity extends BaseActivity implements View.OnClickLi
                 break;
             case "Add Question":
                 drawerLayout.closeDrawers();
-                changeFragment(new AddQuestionFragment());
+                changeFragment(new AddQuestionFragment(),"AddQuestionTag");
                 break;
         }
     }
 
-    public void changeFragment(Fragment fragment){
+    public void changeFragment(Fragment fragment,String tag){
         drawerLayout.closeDrawers();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.questionMainWrapper,fragment);
+        fragmentTransaction.replace(R.id.questionMainWrapper,fragment,tag);
         fragmentTransaction.commit();
     }
 
@@ -164,7 +142,23 @@ public class QuestionMainActivity extends BaseActivity implements View.OnClickLi
     public void onBackPressed() {
         super.onBackPressed();
         FragmentManager fm = getSupportFragmentManager();
-        fm.popBackStack();
+
+        if(fm.findFragmentByTag("QuestionTag") instanceof  QuestionFragment){
+            QuestionFragment frag = ((QuestionFragment) fm.findFragmentByTag("QuestionTag"));
+            ViewPager v = frag.viewPager;
+            if(v.getCurrentItem() == 0) {
+
+                super.onBackPressed();
+                finish();
+            } else {
+
+                v.setCurrentItem(v.getCurrentItem()-1);
+            }
+        } else {
+
+            finish();
+        }
+
     }
 
 

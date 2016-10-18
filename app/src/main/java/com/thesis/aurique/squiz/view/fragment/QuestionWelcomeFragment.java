@@ -13,6 +13,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.thesis.aurique.squiz.R;
+import com.thesis.aurique.squiz.model.Questions;
 import com.thesis.aurique.squiz.view.activity.QuestionMainActivity;
 
 
@@ -31,6 +32,21 @@ public class QuestionWelcomeFragment extends Fragment implements View.OnClickLis
 
         ((Button) view.findViewById(R.id.proceed)).setOnClickListener(this);
 
+        ValueEventListener questionDataListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Questions questions = dataSnapshot.getValue(Questions.class);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+
+        questionActivity.db.child("question").addValueEventListener(questionDataListener);
+
         return  view;
     }
 
@@ -38,7 +54,7 @@ public class QuestionWelcomeFragment extends Fragment implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.proceed :
-                questionActivity.changeFragment(new QuestionFragment());
+                questionActivity.changeFragment(new QuestionFragment(),"QuestionTag");
                 break;
 
         }

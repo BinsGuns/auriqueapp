@@ -34,24 +34,6 @@ public class BaseActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         context = getApplicationContext();
         db = FirebaseDatabase.getInstance().getReference();
-       // FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        db.onDisconnect().setValue(R.string.disconnected);
-
-        authStateListener = new FirebaseAuth.AuthStateListener() { // listener for user state
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-
-                    // User is signed in
-
-                } else {
-
-                    // User is signed out
-
-                }
-            }
-        };
 
 
     }
@@ -59,14 +41,14 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        auth.addAuthStateListener(authStateListener); // add state listener on app start
+      //  auth.addAuthStateListener(authStateListener); // add state listener on app start
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if (authStateListener != null) {
-            auth.removeAuthStateListener(authStateListener); // remove state listener when app stop
-        }
+//        if (authStateListener != null) {
+//            auth.removeAuthStateListener(authStateListener); // remove state listener when app stop
+//        }
     }
 }

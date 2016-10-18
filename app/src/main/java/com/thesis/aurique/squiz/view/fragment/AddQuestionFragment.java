@@ -67,23 +67,51 @@ public class AddQuestionFragment extends Fragment  {
             Date date = new Date();
             question = new Questions();
 
-            Map<String,Object> questionMap  = new HashMap<>();
-            String key = questionMainActivity.db.child("question").push().getKey();
-            questionMap.put("question_id",key);
-            questionMap.put("uId",questionMainActivity.auth.getCurrentUser().getUid());
-            questionMap.put("question",listInputs.get(0));
-            questionMap.put("question_dt_added",dateFormat.format(date));
-            questionMap.put("options",question.toListOption(listInputs.get(1),listInputs.get(2),listInputs.get(3),listInputs.get(4)));
-            questionMap.put("category",listInputs.get(5));
-            questionMap.put("answer",listInputs.get(6));
+            question.uId = questionMainActivity.auth.getCurrentUser().getUid();
+            question.question = listInputs.get(0);
+            question.question_dt_added = dateFormat.format((date));
+            question.options = question.toListOption(listInputs.get(1),listInputs.get(2),listInputs.get(3),listInputs.get(4));
+            question.answer = listInputs.get((6));
+            question.category = listInputs.get(5);
 
-            Map<String,Object> questionValues = new HashMap<>();
-            questionValues.put("/question/"+key, questionMap);
+            questionMainActivity.db.child("question").push().setValue(question);
 
-            questionMainActivity.db.updateChildren(questionValues);
 
+            questionMainActivity.showSnackBar("Successfully adding question !");
+
+            clearField();
+
+
+//            Map<String,Object> questionMap  = new HashMap<>();
+//            String key = questionMainActivity.db.child("question").push().getKey();
+//            questionMap.put("question_id",key);
+//            questionMap.put("uId",questionMainActivity.auth.getCurrentUser().getUid());
+//            questionMap.put("question",listInputs.get(0));
+//            questionMap.put("question_dt_added",dateFormat.format(date));
+//            questionMap.put("options",question.toListOption(listInputs.get(1),listInputs.get(2),listInputs.get(3),listInputs.get(4)));
+//            questionMap.put("category",listInputs.get(5));
+//            questionMap.put("answer",listInputs.get(6));
+//
+//            Map<String,Object> questionValues = new HashMap<>();
+//            questionValues.put("/question/"+key, questionMap);
+//
+//            questionMainActivity.db.updateChildren(questionValues);
+//
 
         }
+    }
+
+    private void clearField(){
+
+        ((EditText) view.findViewById(R.id.question)).getText().clear();
+        ((EditText) view.findViewById(R.id.choiceone)).getText().clear();
+        ((EditText) view.findViewById(R.id.choicetwo)).getText().clear();
+        ((EditText) view.findViewById(R.id.choicethree)).getText().clear();
+        ((EditText) view.findViewById(R.id.choicefour)).getText().clear();
+        ((TextView) view.findViewById(R.id.errorMessage)).setText("");
+        ((RadioGroup) view.findViewById(R.id.categoryquestion)).check(0);
+        ((RadioGroup) view.findViewById(R.id.questionAnswer)).check(0);
+
     }
 
     private void checkInputs(View v) {
