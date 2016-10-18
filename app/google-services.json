@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "864465472452",
-    "firebase_url": "https://aurique-d5859.firebaseio.com",
-    "project_id": "aurique-d5859",
-    "storage_bucket": "aurique-d5859.appspot.com"
+    "project_number": "470884306915",
+    "firebase_url": "https://exquizme-d61c2.firebaseio.com",
+    "project_id": "exquizme-d61c2",
+    "storage_bucket": "exquizme-d61c2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:864465472452:android:9bb0f657e58b852f",
+        "mobilesdk_app_id": "1:470884306915:android:9bb0f657e58b852f",
         "android_client_info": {
           "package_name": "com.thesis.aurique.squiz"
         }
       },
       "oauth_client": [
         {
-          "client_id": "864465472452-u48hrbgmdmmeuessfv98kmomt1asdt21.apps.googleusercontent.com",
+          "client_id": "470884306915-oilp826n93a10eba4bdmgocvgpva34o2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA8vJ14eljLWtEiKXv4Sbr-y98obrmmVPA"
+          "current_key": "AIzaSyAcHY9Na1Kzj3xc9tJ16J7HO3CVvTKdkSo"
         }
       ],
       "services": {

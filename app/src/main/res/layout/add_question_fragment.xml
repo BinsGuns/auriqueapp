@@ -6,175 +6,181 @@
     android:layout_weight="1"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
+    <ScrollView
         android:layout_weight="1"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/errorMessage"
-            android:textColor="@color/red"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_marginTop="16dp"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:text="Your question :"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:hint="Write your question here"
-            android:layout_width="match_parent"
-            android:textColor="@color/grey"
-            android:singleLine="false"
-            android:id="@+id/question"
-            android:textColorHint="@color/darkblue"
-            android:maxLines="5"
-            android:inputType="textMultiLine"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_marginTop="16dp"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:text="Set choices for the question :"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
             <TextView
-                android:textSize="16dp"
-                android:textColor="@color/grey"
-                android:text="Choice one :"
+                android:id="@+id/errorMessage"
+                android:textColor="@color/red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="Your question :"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <EditText
-                android:id="@+id/choiceone"
+                android:hint="Write your question here"
                 android:layout_width="match_parent"
-                android:inputType="text"
-                android:textSize="16dp"
-                android:hint="Input Choice one"
                 android:textColor="@color/grey"
+                android:singleLine="false"
+                android:id="@+id/question"
                 android:textColorHint="@color/darkblue"
+                android:maxLines="5"
+                android:inputType="textMultiLine"
                 android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
             <TextView
-                android:textSize="16dp"
-
-                android:text="Choice two :"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="Set choices for the question :"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <EditText
-                android:id="@+id/choicetwo"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:inputType="text"
-                android:textSize="16dp"
-                android:hint="Input Choice one"
-                android:textColor="@color/grey"
-                android:textColorHint="@color/darkblue"
-                android:layout_height="wrap_content" />
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/grey"
+                    android:text="Choice one :"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/choiceone"
+                    android:layout_width="match_parent"
+                    android:inputType="text"
+                    android:textSize="16dp"
+                    android:hint="Input Choice one"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/darkblue"
+                    android:layout_height="wrap_content" />
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="16dp"
+
+                    android:text="Choice two :"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/choicetwo"
+                    android:layout_width="match_parent"
+                    android:inputType="text"
+                    android:textSize="16dp"
+                    android:hint="Input Choice one"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/darkblue"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="16dp"
+
+                    android:text="Choice three :"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/choicethree"
+                    android:layout_width="match_parent"
+                    android:inputType="text"
+                    android:textSize="16dp"
+                    android:hint="Input Choice one"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/darkblue"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="16dp"
+
+                    android:text="Choice four :"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/choicefour"
+                    android:layout_width="match_parent"
+                    android:inputType="text"
+                    android:textSize="16dp"
+                    android:hint="Input Choice one"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/darkblue"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
             <TextView
-                android:textSize="16dp"
-
-                android:text="Choice three :"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="Set Category for the question :"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <EditText
-                android:id="@+id/choicethree"
-                android:layout_width="match_parent"
-                android:inputType="text"
-                android:textSize="16dp"
-                android:hint="Input Choice one"
-                android:textColor="@color/grey"
-                android:textColorHint="@color/darkblue"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            <RadioGroup
+                android:id="@+id/categoryquestion"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:text="Set A"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:text="Set B"
+                    android:layout_height="wrap_content" />
+            </RadioGroup>
             <TextView
-                android:textSize="16dp"
-
-                android:text="Choice four :"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="Set the answer for this question :"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <EditText
-                android:id="@+id/choicefour"
-                android:layout_width="match_parent"
-                android:inputType="text"
-                android:textSize="16dp"
-                android:hint="Input Choice one"
-                android:textColor="@color/grey"
-                android:textColorHint="@color/darkblue"
-                android:layout_height="wrap_content" />
+            <RadioGroup
+                android:id="@+id/questionAnswer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:text="Choice one"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:text="Choice two"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:text="Choice three"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:text="Choice four"
+                    android:layout_height="wrap_content" />
+            </RadioGroup>
 
         </LinearLayout>
 
-        <TextView
-            android:layout_marginTop="16dp"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:text="Set Category for the question :"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <RadioGroup
-            android:id="@+id/categoryquestion"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:text="Set A"
-                android:layout_height="wrap_content" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:text="Set B"
-                android:layout_height="wrap_content" />
-        </RadioGroup>
-        <TextView
-            android:layout_marginTop="16dp"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:text="Set the answer for this question :"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <RadioGroup
-            android:id="@+id/questionAnswer"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:text="Choice one"
-                android:layout_height="wrap_content" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:text="Choice two"
-                android:layout_height="wrap_content" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:text="Choice three"
-                android:layout_height="wrap_content" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:text="Choice four"
-                android:layout_height="wrap_content" />
-        </RadioGroup>
-
-    </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:orientation="vertical"

@@ -8,6 +8,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -40,13 +41,20 @@ public class QuestionFragment extends Fragment {
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
         pagerAdapter = null;
 
+        viewPager.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
 
         questionMainActivity.db.child("question").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
             if(pagerAdapter == null) {
-                pagerAdapter = new QuestionAdapter( questionMainActivity.context, dataSnapshot);
+                pagerAdapter = new QuestionAdapter(getFragmentManager(), questionMainActivity.context, dataSnapshot);
                 viewPager.setAdapter(pagerAdapter);
+
             }
 
             }

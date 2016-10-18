@@ -81,7 +81,7 @@ public class QuestionMainActivity extends BaseActivity implements View.OnClickLi
     private List<String> initializeList(){
         List<String> menuList = new ArrayList<>();
 
-        if(u.uId.equals("rjUbEYoKUDfJB357099YDBLgNnH3")){ // uid of admin that can add questions
+        if(u.uId.equals("BDRXsRfGxhOa8Xmaci3hzSx4K0C2")){ // uid of admin that can add questions
             menuList.add("Add Question");
         }
         // add more menu here for more functionality
