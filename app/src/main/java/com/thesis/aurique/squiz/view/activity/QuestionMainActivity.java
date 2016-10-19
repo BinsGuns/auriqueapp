@@ -3,6 +3,7 @@ package com.thesis.aurique.squiz.view.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -40,7 +41,7 @@ public class QuestionMainActivity extends BaseActivity implements View.OnClickLi
 
     private QuestionActivityBinding questionFragmentBinding;
     private User u;
-    private DrawerLayout drawerLayout;
+    public DrawerLayout drawerLayout;
     public List<Questions> listQuestion;
     public ProgressDialog progressDialog;
 
@@ -53,12 +54,14 @@ public class QuestionMainActivity extends BaseActivity implements View.OnClickLi
         drawerLayout = questionFragmentBinding.drawer;
         ListView listView = questionFragmentBinding.listItem;
 
+
         checkUser();
         List<String> menuList = initializeList();
 
         listView.setAdapter(new ArrayAdapter<>(this, R.layout.item_nav_layout, menuList));
 
         questionFragmentBinding.navButton.setOnClickListener(this);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -85,7 +88,7 @@ public class QuestionMainActivity extends BaseActivity implements View.OnClickLi
             menuList.add("Add Question");
         }
         // add more menu here for more functionality
-            menuList.add("My Profile");
+            menuList.add("Home");
             menuList.add("Log out");
 
         return menuList;
@@ -100,6 +103,9 @@ public class QuestionMainActivity extends BaseActivity implements View.OnClickLi
 
     private void selectedItem(String val){
         switch(val){
+            case "Home":
+                changeFragment(new QuestionWelcomeFragment(),"QuestionWelcomeTag");
+                break;
             case "Log out":
                 auth.signOut();
                 drawerLayout.closeDrawers();
@@ -139,25 +145,41 @@ public class QuestionMainActivity extends BaseActivity implements View.OnClickLi
     }
 
     @Override
+    public void onStop() {
+        super.onStop();
+        SharedPreferences.Editor e =  sharedPreferences.edit();
+        e.clear();
+        e.commit();
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
-        FragmentManager fm = getSupportFragmentManager();
 
-        if(fm.findFragmentByTag("QuestionTag") instanceof  QuestionFragment){
-            QuestionFragment frag = ((QuestionFragment) fm.findFragmentByTag("QuestionTag"));
-            ViewPager v = frag.viewPager;
-            if(v.getCurrentItem() == 0) {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+        System.exit(0);
 
-                super.onBackPressed();
-                finish();
-            } else {
-
-                v.setCurrentItem(v.getCurrentItem()-1);
-            }
-        } else {
-
-            finish();
-        }
+//        FragmentManager fm = getSupportFragmentManager();
+//
+//        if(fm.findFragmentByTag("QuestionTag") instanceof  QuestionFragment){
+//            QuestionFragment frag = ((QuestionFragment) fm.findFragmentByTag("QuestionTag"));
+//            ViewPager v = frag.viewPager;
+//            if(v.getCurrentItem() == 0) {
+//
+//                super.onBackPressed();
+//                finish();
+//            } else {
+//
+//                v.setCurrentItem(v.getCurrentItem()-1);
+//            }
+//        } else {
+//
+//            finish();
+//        }
 
     }
 

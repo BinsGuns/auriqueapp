@@ -2,6 +2,7 @@ package com.thesis.aurique.squiz.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,6 +27,7 @@ public class BaseActivity extends AppCompatActivity {
     public FirebaseUser user;
     public DatabaseReference db;
     public Context context;
+    public SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,6 +36,8 @@ public class BaseActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         context = getApplicationContext();
         db = FirebaseDatabase.getInstance().getReference();
+
+        sharedPreferences = this.getSharedPreferences("SquizPreferences",Context.MODE_PRIVATE);
 
 
     }
@@ -44,9 +48,12 @@ public class BaseActivity extends AppCompatActivity {
       //  auth.addAuthStateListener(authStateListener); // add state listener on app start
     }
 
+
     @Override
     public void onStop() {
         super.onStop();
+
+
 //        if (authStateListener != null) {
 //            auth.removeAuthStateListener(authStateListener); // remove state listener when app stop
 //        }

@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,32 +23,46 @@ import com.thesis.aurique.squiz.view.activity.QuestionMainActivity;
 public class QuestionWelcomeFragment extends Fragment implements View.OnClickListener{
 
     QuestionMainActivity questionActivity;
+    private String set;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          super.onCreateView(inflater, container, savedInstanceState);
 
-        View view = inflater.inflate(R.layout.question_welcome,container,false);
+        final View view = inflater.inflate(R.layout.question_welcome,container,false);
         questionActivity = ((QuestionMainActivity) getActivity());
 
 
-        ((Button) view.findViewById(R.id.proceed)).setOnClickListener(this);
 
-        ValueEventListener questionDataListener = new ValueEventListener() {
+        ((RadioGroup) view.findViewById(R.id.category)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                view.findViewById(R.id.proceed).setEnabled(true);
+                RadioButton r = (RadioButton) view.findViewById(group.getCheckedRadioButtonId());
+                set = r.getText().toString();
+            }
+        });
+
+        questionActivity.db.child("question").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Questions questions = dataSnapshot.getValue(Questions.class);
+                if(dataSnapshot.getChildrenCount() == 0){
 
+                    ((RadioGroup) view.findViewById(R.id.category)).setVisibility(View.GONE);
+                    ((Button) view.findViewById(R.id.proceed)).setVisibility(View.GONE);
+                    ((TextView) view.findViewById(R.id.labelwelcome)).setText("No Questions yet. Please add!");
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        };
+        });
 
-        questionActivity.db.child("question").addValueEventListener(questionDataListener);
+        ((Button) view.findViewById(R.id.proceed)).setOnClickListener(this);
+
 
         return  view;
     }
@@ -54,7 +71,7 @@ public class QuestionWelcomeFragment extends Fragment implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.proceed :
-                questionActivity.changeFragment(new QuestionFragment(),"QuestionTag");
+                questionActivity.changeFragment(QuestionFragment.newInstance(set),"QuestionTag");
                 break;
 
         }

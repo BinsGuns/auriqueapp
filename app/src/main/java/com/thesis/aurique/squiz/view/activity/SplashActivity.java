@@ -30,6 +30,7 @@ public class SplashActivity extends BaseActivity {
                 // This method will be executed once the timer is over
                 // Start your app main activity
                 Intent i = new Intent(SplashActivity.this, MainActivity.class);
+                i.addCategory(Intent.CATEGORY_DEFAULT);
                 startActivity(i);
 
                 // close this activity

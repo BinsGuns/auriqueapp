@@ -28,6 +28,13 @@ public class QuestionFragment extends Fragment {
     private View view;
     public ViewPager viewPager;
     private PagerAdapter pagerAdapter;
+    private static String mSet;
+
+    public static QuestionFragment newInstance(String set){
+        QuestionFragment q = new QuestionFragment();
+        mSet = set;
+        return q;
+    }
 
     @Nullable
     @Override
@@ -51,8 +58,10 @@ public class QuestionFragment extends Fragment {
         questionMainActivity.db.child("question").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
+
             if(pagerAdapter == null) {
-                pagerAdapter = new QuestionAdapter(getFragmentManager(), questionMainActivity.context, dataSnapshot);
+                pagerAdapter = new QuestionAdapter(getFragmentManager(), questionMainActivity.context, dataSnapshot,mSet);
                 viewPager.setAdapter(pagerAdapter);
 
             }

@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="16sp"
+    android:background="@color/colorPrimary"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
        android:id="@+id/score"
-        android:text="Show Score here !"
         android:layout_centerInParent="true"
         android:textSize="@dimen/title_font"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/buttonprimary"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:id="@+id/done"
+        android:text="DONE"
         android:layout_height="wrap_content" />
 
 </RelativeLayout>

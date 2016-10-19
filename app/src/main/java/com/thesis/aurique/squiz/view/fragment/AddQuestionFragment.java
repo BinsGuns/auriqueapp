@@ -82,21 +82,6 @@ public class AddQuestionFragment extends Fragment  {
             clearField();
 
 
-//            Map<String,Object> questionMap  = new HashMap<>();
-//            String key = questionMainActivity.db.child("question").push().getKey();
-//            questionMap.put("question_id",key);
-//            questionMap.put("uId",questionMainActivity.auth.getCurrentUser().getUid());
-//            questionMap.put("question",listInputs.get(0));
-//            questionMap.put("question_dt_added",dateFormat.format(date));
-//            questionMap.put("options",question.toListOption(listInputs.get(1),listInputs.get(2),listInputs.get(3),listInputs.get(4)));
-//            questionMap.put("category",listInputs.get(5));
-//            questionMap.put("answer",listInputs.get(6));
-//
-//            Map<String,Object> questionValues = new HashMap<>();
-//            questionValues.put("/question/"+key, questionMap);
-//
-//            questionMainActivity.db.updateChildren(questionValues);
-//
 
         }
     }

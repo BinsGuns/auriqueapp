@@ -7,19 +7,45 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_centerInParent="true"
-        android:textColor="@color/grey"
-        android:text="@string/instruction"
+        android:id="@+id/labelwelcome"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/title_font"
+        android:layout_centerHorizontal="true"
+        android:text="Please pick a category of your questions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <RadioGroup
+        android:id="@+id/category"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:layout_marginBottom="16sp"
+            android:layout_marginTop="16sp"
+            android:text="Set A"
+            android:id="@+id/setA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:layout_marginBottom="16sp"
+            android:layout_marginTop="16sp"
+            android:text="Set B"
+            android:id="@+id/setB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RadioGroup>
 
     <Button
         android:id="@+id/proceed"
         android:layout_alignParentBottom="true"
         android:text="PROCEED"
+        android:enabled="false"
+        android:layout_centerHorizontal="true"
         android:textColor="@color/white"
-        android:background="@color/blue"
-        android:layout_width="match_parent"
+        android:background="@drawable/btn_state"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </RelativeLayout>
 
